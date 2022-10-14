@@ -2,8 +2,10 @@
   "name": "brs-butler",
   "version": "1.0.0",
   "description": "BRS Golf Butler",
-  "main": "index.js",
+  "main": "index.ts",
+  "type": "module",
   "scripts": {
+    "start": "ts-node-esm index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,6 +19,12 @@
   },
   "homepage": "https://github.com/Ronan-H/brs-butler#readme",
   "dependencies": {
-    "config": "^3.3.8"
+    "@types/node": "^18.11.0",
+    "config": "^3.3.8",
+    "node-fetch": "^3.2.10",
+    "sync-fetch": "^0.4.2"
+  },
+  "devDependencies": {
+    "typescript": "^4.8.4"
   }
 }
