@@ -19,12 +19,11 @@
   },
   "homepage": "https://github.com/Ronan-H/brs-butler#readme",
   "dependencies": {
-    "@types/node": "^18.11.0",
     "config": "^3.3.8",
-    "node-fetch": "^3.2.10",
     "sync-fetch": "^0.4.2"
   },
   "devDependencies": {
-    "typescript": "^4.8.4"
+    "typescript": "^4.8.4",
+    "@types/node": "^18.11.0"
   }
 }
