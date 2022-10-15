@@ -20,10 +20,13 @@
   "homepage": "https://github.com/Ronan-H/brs-butler#readme",
   "dependencies": {
     "config": "^3.3.8",
+    "moment": "^2.29.4",
+    "nodemailer": "^6.8.0",
+    "nodemailer-mailgun-transport": "^2.1.5",
     "sync-fetch": "^0.4.2"
   },
   "devDependencies": {
-    "typescript": "^4.8.4",
-    "@types/node": "^18.11.0"
+    "@types/node": "^18.11.0",
+    "typescript": "^4.8.4"
   }
 }
