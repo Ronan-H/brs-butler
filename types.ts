@@ -19,6 +19,7 @@ export type ConfigType = {
     },
     pollInterval: number
     loginInterval: number
+    debug: boolean
 };
 
 export type InputType = {

@@ -16,10 +16,21 @@ console.log('Input:', JSON.stringify(input, null, 2), '\n');
 
 prompt('Press enter to continue...');
 
+const notifiedDateTimes = new Set<string>();
 async function sendNotificationEmailAsync(date: string, time: string, teeInfo: TeeInfo) {
-    const nodemailerMailgun = nodemailer.createTransport(mg(config.mailgunAuth));
-
     const formattedDateTime = moment(`${date} ${time}`, "YYYY/MM/DD HH:mm").format('h:mm A [on] dddd, MMM Do');
+
+    if (notifiedDateTimes.has(formattedDateTime)) {
+        console.error(`ERROR: An email was already sent for date time: ${formattedDateTime}. Skipping this email...`);
+        return;
+    }
+    notifiedDateTimes.add(formattedDateTime);
+
+    if (config.debug) {
+        console.log(`DEBUG: An email for date time ${formattedDateTime} would be sent now.`);
+        return;
+    }
+
     const subject = `Tee time now available: ${formattedDateTime}`
     const participants = teeInfo.participants;
     const participantsList = participants.filter(p => p.name).map(p => p.name).join(', ');
@@ -36,6 +47,7 @@ async function sendNotificationEmailAsync(date: string, time: string, teeInfo: T
         <p>${participantsMarkup}</p>
     `;
 
+    const nodemailerMailgun = nodemailer.createTransport(mg(config.mailgunAuth));
     nodemailerMailgun.sendMail({
         ...config.notificationEmails,
         subject,
